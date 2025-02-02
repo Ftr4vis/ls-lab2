@@ -1,0 +1,9 @@
+---
+- name: Flush existing rules
+  ansible.builtin.command: iptables -F
+
+- name: Allow SSH, HTTP, and HTTPS input connections
+  ansible.builtin.command: iptables -A INPUT -p tcp -m multiport --dports 22,80,443 -j ACCEPT
+
+- name: Block all other incoming traffic
+  ansible.builtin.command: iptables -P INPUT DROP

@@ -1,0 +1,19 @@
+---
+- name: Create Juice Shop directory
+  ansible.builtin.file:
+    path: /opt/juice-shop
+    state: directory
+    mode: '0755'
+
+- name: Deploy Docker Compose file
+  ansible.builtin.template:
+    src: docker-compose.yml.j2
+    dest: /opt/juice-shop/docker-compose.yml
+    mode: '0644'
+
+- name: Start Juice Shop container
+  ansible.builtin.command: "{{ docker_compose_command }} up -d"
+  args:
+    chdir: /opt/juice-shop
+  register: docker_compose_result
+  changed_when: "'Starting' in docker_compose_result.stdout"

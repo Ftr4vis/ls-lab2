@@ -1,0 +1,3 @@
+---
+juice_shop_port: 8080
+docker_compose_command: "docker-compose"

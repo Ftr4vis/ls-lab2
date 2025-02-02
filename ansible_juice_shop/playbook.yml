@@ -1,0 +1,7 @@
+---
+- name: Deploy OWASP Juice Shop
+  hosts: juice_shop_host
+  become: true
+  roles:
+    - docker
+    - juice_shop

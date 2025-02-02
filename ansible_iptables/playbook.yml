@@ -1,0 +1,6 @@
+---
+- name: Configure IPTables (close all machine ports exclude ssh, http, https)
+  hosts: all
+  become: yes
+  roles:
+    - iptables

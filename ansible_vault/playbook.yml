@@ -1,0 +1,7 @@
+---
+- name: Ansible Vault example playbook
+  hosts: all
+  tasks:
+    - name: Print DB user's credentials
+      debug:
+        msg: "DB user creds: {{ vault_db_user }}:{{ vault_db_password }}"
